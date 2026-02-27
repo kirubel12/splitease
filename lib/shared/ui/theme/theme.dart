@@ -11,6 +11,8 @@
 ///   darkTheme: darkTheme,
 /// );
 /// ```
+library;
+
 export 'app_colors.dart';
 export 'light_theme.dart';
 export 'dark_theme.dart';
