@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "skills": {
+    "flutter-adaptive-ui": {
+      "source": "madteacher/mad-agents-skills",
+      "sourceType": "github",
+      "computedHash": "7b9c4ecda94f80ae16addab433432ae0e76d1b114a3f87e2df9269954e6196b6"
+    },
+    "flutter-animations": {
+      "source": "madteacher/mad-agents-skills",
+      "sourceType": "github",
+      "computedHash": "0c62d299cfdb82a8a22eadcb9b58c998cb6ceb85368a342689143a0278e4c7bb"
+    },
+    "flutter-architecture": {
+      "source": "madteacher/mad-agents-skills",
+      "sourceType": "github",
+      "computedHash": "6d65653e2930a5f5b108f5ce90520272e37fda9269197e6446a4e07576b36bf5"
+    },
+    "flutter-patterns": {
+      "source": "cleydson/flutter-claude-code",
+      "sourceType": "github",
+      "computedHash": "f48c7eb235b89abef1c67513d364b32e5a6a9d5ef0728e2767da610c05a4a991"
+    },
+    "flutter-riverpod-expert": {
+      "source": "juparave/dotfiles",
+      "sourceType": "github",
+      "computedHash": "1b81c426cb1e7d2a369d4e0a08f5eebf7b67a1b342a0d5ec52d641b8536bfdc6"
+    }
+  }
+}
