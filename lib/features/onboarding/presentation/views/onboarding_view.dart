@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:splitease/features/auth/presentation/views/login_view.dart';
+import 'package:splitease/features/auth/presentation/views/signup_view.dart';
+import 'package:splitease/features/auth/presentation/widgets/auth_choice_sheet.dart';
 import 'package:splitease/features/onboarding/presentation/widgets/onboarding_slide.dart';
 import 'package:splitease/shared/core/constants/app_string.dart';
 import 'package:splitease/shared/providers/theme_provider.dart';
+
+enum _AuthChoice { login, signup }
 
 class OnboardingView extends ConsumerStatefulWidget {
   const OnboardingView({super.key});
@@ -17,6 +22,7 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
 
   final PageController _pageController = PageController();
   int _currentPage = 0;
+  bool _isAuthSheetOpen = false;
 
   bool get _isLastPage => _currentPage == _pageCount - 1;
 
@@ -28,6 +34,7 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
 
   void _goNext() {
     if (_isLastPage) {
+      _openAuthChoiceSheet();
       return;
     }
 
@@ -35,6 +42,41 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
       duration: const Duration(milliseconds: 450),
       curve: Curves.easeOutCubic,
     );
+  }
+
+  Future<void> _openAuthChoiceSheet() async {
+    if (_isAuthSheetOpen) {
+      return;
+    }
+
+    _isAuthSheetOpen = true;
+
+    final choice = await showModalBottomSheet<_AuthChoice>(
+      context: context,
+      isDismissible: false,
+      enableDrag: true,
+      useSafeArea: true,
+      backgroundColor: Colors.transparent,
+      builder: (modalContext) {
+        return AuthChoiceSheet(
+          onLogin: () => Navigator.of(modalContext).pop(_AuthChoice.login),
+          onSignUp: () => Navigator.of(modalContext).pop(_AuthChoice.signup),
+        );
+      },
+    );
+
+    _isAuthSheetOpen = false;
+
+    if (!mounted || choice == null) {
+      return;
+    }
+
+    final route = MaterialPageRoute<void>(
+      builder: (_) =>
+          choice == _AuthChoice.login ? const LoginView() : const SignUpView(),
+    );
+
+    Navigator.of(context).push(route);
   }
 
   void _goBack() {
@@ -86,6 +128,7 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
                         const SizedBox(height: 8),
                         _TopBar(
                           themeMode: themeMode,
+                          onSkip: _openAuthChoiceSheet,
                           onToggleTheme: () =>
                               ref.read(appThemeModeProvider.notifier).toggleTheme(),
                         ),
@@ -146,10 +189,12 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
 class _TopBar extends StatelessWidget {
   const _TopBar({
     required this.themeMode,
+    required this.onSkip,
     required this.onToggleTheme,
   });
 
   final ThemeMode themeMode;
+  final VoidCallback onSkip;
   final VoidCallback onToggleTheme;
 
   @override
@@ -174,7 +219,7 @@ class _TopBar extends StatelessWidget {
         ),
         const Spacer(),
         TextButton(
-          onPressed: () {},
+          onPressed: onSkip,
           style: TextButton.styleFrom(
             foregroundColor: colors.onSurface,
           ),
@@ -267,3 +312,4 @@ class _BottomControls extends StatelessWidget {
     );
   }
 }
+

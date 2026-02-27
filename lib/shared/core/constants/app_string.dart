@@ -15,8 +15,13 @@ class AppStrings {
 
   // --- Authentication ---
   static const String authWelcomeTitle = "Ready to make math easy?";
+  static const String authChooserTitle = "Join SplitEase";
+  static const String authChooserBody =
+      "Log in to continue or create an account to start splitting bills.";
   static const String loginButton = "Log In";
   static const String signUpButton = "Create Account";
+  static const String loginComingSoon = "Login screen coming soon";
+  static const String signupComingSoon = "Sign up screen coming soon";
   static const String googleSignIn = "Continue with Google";
   static const String emailPlaceholder = "Email Address";
   static const String passwordPlaceholder = "Password";
@@ -52,3 +57,4 @@ class AppStrings {
   static const String networkError =
       "Connection lost. We'll sync with Supabase once you're back online.";
 }
+
