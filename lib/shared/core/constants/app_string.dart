@@ -1,17 +1,17 @@
 class AppStrings {
-  static const String onboardingOneTitle = "Stop Typing, Start Scanning";
+  static const String onboardingOneTitle = "Scan. Done.";
   static const String onboardingOneBody =
-      "Tired of manual entry? Just snap a photo of your receipt. Our AI reads the items and prices for you in seconds.";
+      "Snap your receipt and let AI capture every item in seconds.";
 
   // Onboarding 2: Itemized Splitting
-  static const String onboardingTwoTitle = "Split by Item, Not Just by Head";
+  static const String onboardingTwoTitle = "Assign What You Ate";
   static const String onboardingTwoBody =
-      "Don't pay for your friend's steak if you only had a salad. Drag and drop items to the people who actually ate them.";
+      "Tap items to friends so everyone pays only their true share.";
 
   // Onboarding 3: Supabase Sync
-  static const String onboardingThreeTitle = "Settle Up Without the Stress";
+  static const String onboardingThreeTitle = "Settle in One View";
   static const String onboardingThreeBody =
-      "Real-time tracking for everyone in the group. See exactly who owes what and settle via your favorite payment app.";
+      "See balances update live and settle quickly with your preferred app.";
 
   // --- Authentication ---
   static const String authWelcomeTitle = "Ready to make math easy?";
