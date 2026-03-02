@@ -13,7 +13,7 @@ class AuthenticatedShellView extends ConsumerWidget {
     final colors = theme.colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: const Text(AppStrings.authenticatedShellTitle)),
+      appBar: AppBar(title: const Text(AppStrings.appTitle)),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(

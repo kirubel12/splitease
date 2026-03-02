@@ -6,6 +6,7 @@ import 'package:splitease/features/auth/presentation/views/signup_view.dart';
 import 'package:splitease/features/auth/presentation/widgets/auth_choice_sheet.dart';
 import 'package:splitease/features/onboarding/presentation/widgets/onboarding_slide.dart';
 import 'package:splitease/shared/core/constants/app_string.dart';
+import 'package:splitease/shared/providers/app_launch_provider.dart';
 import 'package:splitease/shared/providers/theme_provider.dart';
 
 enum _AuthChoice { login, signup }
@@ -44,6 +45,11 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
     );
   }
 
+  Future<void> _markOnboardingSeen() async {
+    await ref.read(appLaunchServiceProvider).setSeenOnboarding();
+    ref.invalidate(appLaunchStateProvider);
+  }
+
   Future<void> _openAuthChoiceSheet() async {
     if (_isAuthSheetOpen) {
       return;
@@ -51,21 +57,31 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
 
     _isAuthSheetOpen = true;
 
-    final choice = await showModalBottomSheet<_AuthChoice>(
-      context: context,
-      isDismissible: false,
-      enableDrag: true,
-      useSafeArea: true,
-      backgroundColor: Colors.transparent,
-      builder: (modalContext) {
-        return AuthChoiceSheet(
-          onLogin: () => Navigator.of(modalContext).pop(_AuthChoice.login),
-          onSignUp: () => Navigator.of(modalContext).pop(_AuthChoice.signup),
-        );
-      },
-    );
+    _AuthChoice? choice;
 
-    _isAuthSheetOpen = false;
+    try {
+      await _markOnboardingSeen();
+
+      if (!mounted) {
+        return;
+      }
+
+      choice = await showModalBottomSheet<_AuthChoice>(
+        context: context,
+        isDismissible: false,
+        enableDrag: true,
+        useSafeArea: true,
+        backgroundColor: Colors.transparent,
+        builder: (modalContext) {
+          return AuthChoiceSheet(
+            onLogin: () => Navigator.of(modalContext).pop(_AuthChoice.login),
+            onSignUp: () => Navigator.of(modalContext).pop(_AuthChoice.signup),
+          );
+        },
+      );
+    } finally {
+      _isAuthSheetOpen = false;
+    }
 
     if (!mounted || choice == null) {
       return;
@@ -286,7 +302,8 @@ class _BottomControls extends StatelessWidget {
                     side: BorderSide(color: colors.outline),
                     backgroundColor: colors.surface,
                     minimumSize: const Size.fromHeight(56),
-                    padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
                   ),
                   child: const Text('Back'),
                 ),
@@ -301,7 +318,8 @@ class _BottomControls extends StatelessWidget {
                   backgroundColor: colors.primary,
                   foregroundColor: colors.onPrimary,
                   minimumSize: const Size.fromHeight(56),
-                  padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
                 ),
                 child: Text(isLastPage ? 'Get started' : 'Continue'),
               ),
@@ -312,4 +330,6 @@ class _BottomControls extends StatelessWidget {
     );
   }
 }
+
+
 

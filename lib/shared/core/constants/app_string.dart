@@ -27,13 +27,24 @@ class AppStrings {
   static const String passwordPlaceholder = "Password";
   static const String usernamePlaceholder = "Choose a Username";
   static const String forgotPasswordButton = "Forgot Password?";
-  static const String authUnexpectedError = "Something went wrong. Please try again.";
+  static const String authUnexpectedError =
+      "Something went wrong. Please try again.";
   static const String signUpVerifyEmailMessage =
       "Account created. Check your email to verify, then log in.";
-  static const String authenticatedShellTitle = "SplitEase";
+  static const String appTitle = "SplitEase";
   static const String authenticatedShellBody =
       "You are logged in successfully. Dashboard integration is next.";
   static const String logoutButton = "Log Out";
+
+  // Startup
+  static const String startupLoading = "Checking your account...";
+
+  // Home
+  static const String homeHeader = "Hey there!";
+  static const String homeWelcomeBody =
+      "Welcome back. Your shared expenses are ready to review.";
+  static const String homePlaceholderBody =
+      "Your home dashboard modules (groups, expenses, settlements) will appear here.";
 
   // Recovery flow
   static const String forgotPasswordTitle = "Forgot Password";
@@ -46,7 +57,8 @@ class AppStrings {
   static const String verifyCodeButton = "Verify Code";
   static const String resendCodeButton = "Resend Code";
   static const String resendingCodeButton = "Resending...";
-  static const String otpCodeSentSuccess = "A 6-digit code has been sent to your email.";
+  static const String otpCodeSentSuccess =
+      "A 6-digit code has been sent to your email.";
   static const String otpCodeResentSuccess = "A new code has been sent.";
   static const String newPasswordTitle = "Set New Password";
   static const String newPasswordBody =
@@ -61,8 +73,7 @@ class AppStrings {
   static const String passwordResetSuccess =
       "Password updated successfully. You can now log in.";
 
-  // --- Home / Dashboard ---
-  static const String homeHeader = "Hey there!";
+  // Legacy dashboard labels
   static const String totalOwedToYou = "Owed to you";
   static const String totalYouOwe = "You owe";
   static const String scanNewBill = "Scan New Bill";

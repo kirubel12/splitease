@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:splitease/features/auth/domain/repositories/auth_repository.dart';
 import 'package:splitease/features/auth/presentation/providers/auth_provider.dart';
 import 'package:splitease/features/auth/presentation/utils/auth_validators.dart';
-import 'package:splitease/features/auth/presentation/views/authenticated_shell_view.dart';
 import 'package:splitease/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:splitease/features/auth/presentation/views/signup_view.dart';
+import 'package:splitease/features/home/presentation/views/home_view.dart';
 import 'package:splitease/shared/core/constants/app_string.dart';
 import 'package:splitease/shared/ui/widgets/app_text_field.dart';
 
@@ -73,7 +73,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
           previousAuth?.isAuthenticated != true) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute<void>(
-            builder: (_) => const AuthenticatedShellView(),
+            builder: (_) => const HomeView(),
           ),
         );
       }

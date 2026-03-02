@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:splitease/shared/ui/theme/theme.dart';
+import 'package:splitease/features/auth/presentation/views/auth_startup_gate_view.dart';
 import 'package:splitease/shared/providers/theme_provider.dart';
-import 'package:splitease/features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:splitease/shared/ui/theme/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Load environment variables
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: '.env');
 
   // Initialize Supabase
   await Supabase.initialize(
@@ -34,7 +34,7 @@ class MyApp extends ConsumerWidget {
       darkTheme: darkTheme,
       themeMode: themeMode,
       debugShowCheckedModeBanner: false,
-      home: const OnboardingView(),
+      home: const AuthStartupGateView(),
     );
   }
 }
