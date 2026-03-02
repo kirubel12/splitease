@@ -26,6 +26,40 @@ class AppStrings {
   static const String emailPlaceholder = "Email Address";
   static const String passwordPlaceholder = "Password";
   static const String usernamePlaceholder = "Choose a Username";
+  static const String forgotPasswordButton = "Forgot Password?";
+  static const String authUnexpectedError = "Something went wrong. Please try again.";
+  static const String signUpVerifyEmailMessage =
+      "Account created. Check your email to verify, then log in.";
+  static const String authenticatedShellTitle = "SplitEase";
+  static const String authenticatedShellBody =
+      "You are logged in successfully. Dashboard integration is next.";
+  static const String logoutButton = "Log Out";
+
+  // Recovery flow
+  static const String forgotPasswordTitle = "Forgot Password";
+  static const String forgotPasswordBody =
+      "Enter your account email and we will send you a 6-digit verification code.";
+  static const String sendCodeButton = "Send Code";
+  static const String verifyOtpTitle = "Verify Code";
+  static const String verifyOtpBody = "Enter the 6-digit code sent to";
+  static const String otpCodeHelper = "Code expires quickly for your security.";
+  static const String verifyCodeButton = "Verify Code";
+  static const String resendCodeButton = "Resend Code";
+  static const String resendingCodeButton = "Resending...";
+  static const String otpCodeSentSuccess = "A 6-digit code has been sent to your email.";
+  static const String otpCodeResentSuccess = "A new code has been sent.";
+  static const String newPasswordTitle = "Set New Password";
+  static const String newPasswordBody =
+      "Create a new password for your account to complete recovery.";
+  static const String newPasswordLabel = "New Password";
+  static const String newPasswordHint = "Enter your new password";
+  static const String confirmPasswordLabel = "Confirm Password";
+  static const String confirmPasswordHint = "Re-enter your new password";
+  static const String passwordRuleHelper =
+      "Use at least 8 characters and make sure both passwords match.";
+  static const String resetPasswordButton = "Reset Password";
+  static const String passwordResetSuccess =
+      "Password updated successfully. You can now log in.";
 
   // --- Home / Dashboard ---
   static const String homeHeader = "Hey there!";
@@ -57,4 +91,3 @@ class AppStrings {
   static const String networkError =
       "Connection lost. We'll sync with Supabase once you're back online.";
 }
-

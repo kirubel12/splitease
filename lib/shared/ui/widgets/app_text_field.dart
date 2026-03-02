@@ -4,6 +4,7 @@ class AppTextField extends StatelessWidget {
   final String label;
   final String hint;
   final IconData? prefixIcon;
+  final Widget? suffixIcon;
   final bool obscureText;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
@@ -14,6 +15,7 @@ class AppTextField extends StatelessWidget {
     required this.label,
     required this.hint,
     this.prefixIcon,
+    this.suffixIcon,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.validator,
@@ -42,6 +44,7 @@ class AppTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hint,
             prefixIcon: prefixIcon != null ? Icon(prefixIcon, size: 20) : null,
+            suffixIcon: suffixIcon,
           ),
         ),
       ],
